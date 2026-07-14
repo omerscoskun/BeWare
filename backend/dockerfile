@@ -1,0 +1,18 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+COPY BeWare.Movies.slnx ./
+COPY src/Api/BeWare.Movies.Api.csproj src/Api/
+COPY src/Application/BeWare.Movies.Application.csproj src/Application/
+COPY src/Domain/BeWare.Movies.Domain.csproj src/Domain/
+COPY src/Infrastructure/BeWare.Movies.Infrastructure.csproj src/Infrastructure/
+RUN dotnet restore src/Api/BeWare.Movies.Api.csproj
+
+COPY . .
+RUN dotnet publish src/Api/BeWare.Movies.Api.csproj -c Release -o /app
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
+WORKDIR /app
+COPY --from=build /app ./
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "BeWare.Movies.Api.dll"]

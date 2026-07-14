@@ -3,15 +3,15 @@ services:
     image: postgres:17-alpine
     container_name: beware-postgres
     environment:
-      POSTGRES_DB: beware
-      POSTGRES_USER: beware
-      POSTGRES_PASSWORD: beware
+      POSTGRES_DB: ${POSTGRES_DB:-beware}
+      POSTGRES_USER: ${POSTGRES_USER:-beware}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-beware}
     ports:
       - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U beware -d beware"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-beware} -d ${POSTGRES_DB:-beware}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -23,6 +23,33 @@ services:
       - "6379:6379"
     volumes:
       - redis-data:/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: beware-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Postgres: "Host=postgres;Port=5432;Database=${POSTGRES_DB:-beware};Username=${POSTGRES_USER:-beware};Password=${POSTGRES_PASSWORD:-beware}"
+      ConnectionStrings__Redis: "redis:6379"
+      Tmdb__ApiToken: ${TMDB_API_TOKEN}
+    ports:
+      - "5147:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: beware-frontend
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
 
 volumes:
   postgres-data:
