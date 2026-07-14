@@ -32,13 +32,13 @@ Bu liste, [Project_Details.md](Project_Details.md) mimarisine göre demo iskelet
 - [x] Controller'lar: `MoviesController` (list/search/detail), `FavoritesController` (ekle/çıkar/listele — cihaz bazlı `deviceId`)
 - [x] DI kayıtları (servis + arayüz eşleştirmeleri), global exception handling, CORS (Angular origin), health check
 - [x] Swagger/OpenAPI aktif et
-- [?] `appsettings.json` + örnek `appsettings.Development.json` / secrets şablonu
+- [x] `appsettings.json` + örnek `appsettings.Development.json` / secrets şablonu
 
 ## 2. Frontend — Angular + Tailwind
-- [ ] `ng new frontend` (routing + SCSS/CSS)
-- [ ] Tailwind kur ve yapılandır (koyu tema varsayılan)
-- [ ] Ortam dosyası: backend API base URL (`environment.ts`)
-- [ ] `MovieService` (yalnızca kendi backend'e konuşur — TMDB'ye doğrudan **değil**)
+- [x] `ng new frontend` (routing + SCSS/CSS)
+- [x] Tailwind kur ve yapılandır (koyu tema varsayılan)
+- [x] Ortam dosyası: backend API base URL (`environment.ts`)
+- [x] `MovieService` (yalnızca kendi backend'e konuşur — TMDB'ye doğrudan **değil**)
 - [ ] Sayfalar/route'lar: Ana sayfa (popüler + trend grid), Arama sonuçları, Film detay, Favoriler
 - [ ] Bileşenler: poster kartı, film grid, arama çubuğu, skeleton loader, boş/hata durumu
 - [ ] Favori state yönetimi (cihaz bazlı `deviceId`'yi localStorage'da tut)
