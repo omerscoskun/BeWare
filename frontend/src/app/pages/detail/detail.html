@@ -1,57 +1,71 @@
-@if (loading()) {
-  <p class="text-neutral-400">Yükleniyor…</p>
-} @else if (error() || !movie()) {
+@if (error() && !movie()) {
   <p class="text-red-400">Film yüklenemedi.</p>
-} @else if (movie(); as m) {
+} @else {
   <div class="flex flex-col gap-6 sm:flex-row">
     <div class="w-40 shrink-0 sm:w-56">
-      @if (posterUrl(); as url) {
-        <img [src]="url" [alt]="m.title" class="w-full rounded-lg ring-1 ring-neutral-800" />
+      @if (heroPoster(); as url) {
+        <img [src]="url" [alt]="heroTitle() ?? ''"
+             class="w-full rounded-lg ring-1 ring-neutral-800" />
       } @else {
-        <div class="flex aspect-[2/3] items-center justify-center rounded-lg bg-neutral-800 text-neutral-500">
-          Poster yok
-        </div>
+        <div class="aspect-[2/3] animate-pulse rounded-lg bg-neutral-800"></div>
       }
     </div>
 
     <div class="flex-1">
-      <h1 class="text-3xl font-bold">{{ m.title }}</h1>
+      @if (heroTitle(); as t) {
+        <h1 class="text-3xl font-bold">{{ t }}</h1>
+      } @else {
+        <div class="h-9 w-64 animate-pulse rounded bg-neutral-800"></div>
+      }
 
-      <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-neutral-400">
-        <span class="font-semibold text-amber-400">★ {{ m.voteAverage | number: '1.1-1' }}</span>
-        @if (m.releaseDate) { <span>{{ m.releaseDate }}</span> }
-        @if (m.runtime) { <span>{{ m.runtime }} dk</span> }
-      </div>
-
-      @if (m.genres.length) {
-        <div class="mt-3 flex flex-wrap gap-2">
-          @for (g of m.genres; track g) {
-            <span class="rounded-full bg-neutral-800 px-3 py-1 text-xs">{{ g }}</span>
+      @if (heroVote(); as v) {
+        <div class="mt-2 flex flex-wrap items-center gap-3 text-sm text-neutral-400">
+          <span class="font-semibold text-amber-400">★ {{ v | number: '1.1-1' }}</span>
+          @if (movie(); as m) {
+            @if (m.releaseDate) { <span>{{ m.releaseDate }}</span> }
+            @if (m.runtime) { <span>{{ m.runtime }} dk</span> }
           }
         </div>
       }
 
-      <button (click)="toggleFavorite()"
-        class="mt-5 rounded-full px-5 py-2 text-sm font-semibold transition"
-        [class.bg-brand]="!isFavorite()"
-        [class.hover:bg-brand-hover]="!isFavorite()"
-        [class.bg-neutral-700]="isFavorite()">
-        {{ isFavorite() ? '✓ Favorilerde' : '♥ Favorilere ekle' }}
-      </button>
+      @if (movie(); as m) {
+        @if (m.genres.length) {
+          <div class="mt-3 flex flex-wrap gap-2">
+            @for (g of m.genres; track g) {
+              <span class="rounded-full bg-neutral-800 px-3 py-1 text-xs">{{ g }}</span>
+            }
+          </div>
+        }
 
-      @if (m.overview) {
-        <p class="mt-6 leading-relaxed text-neutral-300">{{ m.overview }}</p>
-      }
+        <button (click)="toggleFavorite()"
+          class="mt-5 rounded-full px-5 py-2 text-sm font-semibold transition active:scale-95"
+          [class.bg-brand]="!isFavorite()"
+          [class.hover:bg-brand-hover]="!isFavorite()"
+          [class.bg-neutral-700]="isFavorite()">
+          {{ isFavorite() ? '✓ Favorilerde' : '♥ Favorilere ekle' }}
+        </button>
 
-      @if (m.cast.length) {
-        <h2 class="mt-6 mb-2 text-lg font-semibold">Oyuncular</h2>
-        <p class="text-sm text-neutral-400">{{ m.cast.join(', ') }}</p>
-      }
+        @if (m.overview) {
+          <p class="mt-6 leading-relaxed text-neutral-300">{{ m.overview }}</p>
+        }
 
-      @if (trailerUrl(); as url) {
-        <h2 class="mt-6 mb-2 text-lg font-semibold">Fragman</h2>
-        <div class="aspect-video max-w-2xl overflow-hidden rounded-lg">
-          <iframe class="h-full w-full" [src]="url" title="Fragman" allowfullscreen></iframe>
+        @if (m.cast.length) {
+          <h2 class="mt-6 mb-2 text-lg font-semibold">Oyuncular</h2>
+          <p class="text-sm text-neutral-400">{{ m.cast.join(', ') }}</p>
+        }
+
+        @if (trailerUrl(); as url) {
+          <h2 class="mt-6 mb-2 text-lg font-semibold">Fragman</h2>
+          <div class="aspect-video max-w-2xl overflow-hidden rounded-lg">
+            <iframe class="h-full w-full" [src]="url" title="Fragman" allowfullscreen></iframe>
+          </div>
+        }
+      } @else {
+        <div class="mt-5 space-y-3">
+          <div class="h-9 w-40 animate-pulse rounded-full bg-neutral-800"></div>
+          <div class="mt-4 h-4 w-full animate-pulse rounded bg-neutral-800"></div>
+          <div class="h-4 w-11/12 animate-pulse rounded bg-neutral-800"></div>
+          <div class="h-4 w-2/3 animate-pulse rounded bg-neutral-800"></div>
         </div>
       }
     </div>

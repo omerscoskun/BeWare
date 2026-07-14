@@ -3,7 +3,7 @@
 </h1>
 
 @if (loading()) {
-  <p class="text-neutral-400">Aranıyor…</p>
+  <app-movie-grid-skeleton [count]="10" />
 } @else if (error()) {
   <p class="text-red-400">Arama başarısız oldu.</p>
 } @else if (query() && results().length === 0) {

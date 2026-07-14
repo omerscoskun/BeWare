@@ -1,5 +1,6 @@
 @if (loading()) {
-  <p class="text-neutral-400">Yükleniyor…</p>
+  <h1 class="mb-4 text-2xl font-bold">Trend Filmler</h1>
+  <app-movie-grid-skeleton [count]="10" />
 } @else if (error()) {
   <p class="text-red-400">Filmler yüklenemedi. Backend çalışıyor mu?</p>
 } @else {

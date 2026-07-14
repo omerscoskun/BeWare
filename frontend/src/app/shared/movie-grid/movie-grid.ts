@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 import { MovieSummary } from '../../core/models/movie.model';
 import { MovieCard } from '../movie-card/movie-card';
+import { AutoAnimate } from '../auto-animate.directive';
 
 @Component({
   selector: 'app-movie-grid',
-  imports: [MovieCard],
+  imports: [MovieCard, AutoAnimate],
   templateUrl: './movie-grid.html',
 })
 export class MovieGrid {

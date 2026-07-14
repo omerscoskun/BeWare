@@ -1,10 +1,12 @@
-<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-  @for (movie of movies(); track movie.tmdbId) {
-    <app-movie-card
-      [tmdbId]="movie.tmdbId"
-      [title]="movie.title"
-      [posterPath]="movie.posterPath"
-      [voteAverage]="movie.voteAverage"
-    />
+<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" appAutoAnimate>
+  @for (movie of movies(); track movie.tmdbId; let i = $index) {
+    <div class="animate-fade-up" [style.animation-delay.ms]="(i % 12) * 40">
+      <app-movie-card
+        [tmdbId]="movie.tmdbId"
+        [title]="movie.title"
+        [posterPath]="movie.posterPath"
+        [voteAverage]="movie.voteAverage"
+      />
+    </div>
   }
 </div>

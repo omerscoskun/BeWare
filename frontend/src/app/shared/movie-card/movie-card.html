@@ -1,5 +1,6 @@
-<a [routerLink]="['/movie', tmdbId()]"
-   class="group block overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-neutral-800 transition hover:ring-brand">
+<a [routerLink]="['/movie', tmdbId()]" [state]="navState()" (mouseenter)="prefetch()"
+   class="group block overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-neutral-800
+          transition duration-200 hover:-translate-y-1 hover:ring-brand active:scale-95">
   <div class="relative aspect-[2/3] bg-neutral-800">
     @if (posterUrl(); as url) {
       <img [src]="url" [alt]="title()" loading="lazy"

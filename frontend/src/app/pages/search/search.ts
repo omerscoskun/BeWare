@@ -4,12 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieSummary } from '../../core/models/movie.model';
 import { MovieService } from '../../core/services/movie.service';
 import { MovieGrid } from '../../shared/movie-grid/movie-grid';
+import { MovieGridSkeleton } from '../../shared/movie-grid-skeleton/movie-grid-skeleton';
 
 @Component({
   selector: 'app-search',
-  imports: [MovieGrid],
+  imports: [MovieGrid, MovieGridSkeleton],
   templateUrl: './search.html',
 })
+
 export class Search {
   private readonly route = inject(ActivatedRoute);
   private readonly movieService = inject(MovieService);

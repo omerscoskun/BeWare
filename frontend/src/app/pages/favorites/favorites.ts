@@ -1,12 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AutoAnimate } from '../../shared/auto-animate.directive';
 import { environment } from '../../../environments/environment';
 import { FavoriteDto } from '../../core/models/movie.model';
 import { FavoriteService } from '../../core/services/favorite.service';
 
 @Component({
   selector: 'app-favorites',
-  imports: [RouterLink],
+  imports: [RouterLink, AutoAnimate],
   templateUrl: './favorites.html',
 })
 export class Favorites {

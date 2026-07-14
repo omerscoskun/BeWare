@@ -5,9 +5,10 @@
 } @else if (favorites().length === 0) {
   <p class="text-neutral-400">Henüz favori eklemedin.</p>
 } @else {
-  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-    @for (f of favorites(); track f.tmdbMovieId) {
-      <div class="group relative overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-neutral-800">
+  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" appAutoAnimate>
+    @for (f of favorites(); track f.tmdbMovieId; let i = $index) {
+      <div class="animate-fade-up group relative overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-neutral-800"
+           [style.animation-delay.ms]="(i % 12) * 40">
         <a [routerLink]="['/movie', f.tmdbMovieId]">
           <div class="aspect-[2/3] bg-neutral-800">
             @if (posterUrl(f.posterPath); as url) {
@@ -20,9 +21,10 @@
         </a>
         <button (click)="remove(f.tmdbMovieId)"
           class="absolute right-2 top-2 rounded-full bg-black/70 px-2 py-1 text-xs text-red-400
-                 opacity-0 transition group-hover:opacity-100"
+                 opacity-0 transition hover:scale-110 active:scale-90 group-hover:opacity-100"
           title="Favorilerden çıkar">✕</button>
       </div>
     }
   </div>
 }
+
