@@ -1,0 +1,6 @@
+@BeWare.Movies.Api_HostAddress = http://localhost:5147
+
+GET {{BeWare.Movies.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

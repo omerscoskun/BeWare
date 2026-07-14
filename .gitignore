@@ -1,0 +1,129 @@
+# ============================================================
+# BeWare Movies — .gitignore
+# ============================================================
+
+# ---------- Ortam / Sırlar ----------
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+secrets.json
+*.pfx
+*.key
+
+# ============================================================
+# .NET / C# (backend)
+# ============================================================
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+[Dd]ebugPublic/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Build sonuçları / paketler
+*.dll
+*.exe
+*.pdb
+*.cache
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+.nuget/
+
+# EF Core
+# (migration dosyaları commit'lenir; sadece derleme çıktıları hariç tutulur)
+
+# Test sonuçları / coverage
+[Tt]est[Rr]esult*/
+TestResults/
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.coveragexml
+
+# Rider / Visual Studio
+.vs/
+.idea/
+*.DotSettings.user
+
+# ============================================================
+# Node / Angular (frontend)
+# ============================================================
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Angular build çıktıları
+dist/
+frontend/dist/
+tmp/
+/out-tsc/
+.angular/
+.angular/cache/
+
+# Test / coverage
+/coverage/
+frontend/coverage/
+*.lcov
+karma.log
+
+# Editor önbellek
+*.tsbuildinfo
+.eslintcache
+
+# ============================================================
+# Docker
+# ============================================================
+# (Dockerfile ve docker-compose.yml commit'lenir)
+docker-compose.override.yml
+*.env.docker
+
+# ============================================================
+# İşletim sistemi / Editör
+# ============================================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+*~
+
+# VS Code — takım ayarları kalsın, kişisel olanlar hariç
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ---------- Loglar / geçici ----------
+*.log
+logs/
+*.tmp
+*.bak
