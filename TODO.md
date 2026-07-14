@@ -19,9 +19,9 @@ Bu liste, [Project_Details.md](Project_Details.md) mimarisine göre demo iskelet
 - [x] `Favorite` entity'si (dış bağımlılığı olmayan saf katman)
 
 ### 1b. Application (İş Mantığı)
-- [ ] Arayüz sözleşmeleri: `ITmdbClient`, `IFavoriteRepository`, `IMovieCache` (Infrastructure bunları uygular)
-- [ ] Servisler: `MovieService` (list/search/detail), `FavoriteService` (ekle/çıkar/listele)
-- [ ] DTO'lar + mapping, iş kuralları
+- [x] Arayüz sözleşmeleri: `ITmdbClient`, `IFavoriteRepository`, `IMovieCache` (Infrastructure bunları uygular)
+- [x] Servisler: `MovieService` (list/search/detail), `FavoriteService` (ekle/çıkar/listele)
+- [?] DTO'lar + mapping, iş kuralları
 
 ### 1c. Infrastructure (Veri ve Dış Servisler)
 - [ ] TMDB `HttpClient` servisi (typed client, `tr-TR`, API key appsettings/secret'ten) — popüler, trend, arama, detay
