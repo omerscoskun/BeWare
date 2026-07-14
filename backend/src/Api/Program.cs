@@ -27,6 +27,8 @@ builder.Services.AddCors(o => o.AddPolicy(CorsPolicy, p => p
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 app.UseExceptionHandler();
@@ -41,6 +43,7 @@ if (app.Environment.IsDevelopment())
     await scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.MigrateAsync();
 }
 
+app.MapHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseCors(CorsPolicy);
 app.MapControllers();
