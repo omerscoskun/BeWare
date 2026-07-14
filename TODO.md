@@ -39,7 +39,7 @@ Bu liste, [Project_Details.md](Project_Details.md) mimarisine göre demo iskelet
 - [x] Tailwind kur ve yapılandır (koyu tema varsayılan)
 - [x] Ortam dosyası: backend API base URL (`environment.ts`)
 - [x] `MovieService` (yalnızca kendi backend'e konuşur — TMDB'ye doğrudan **değil**)
-- [ ] Sayfalar/route'lar: Ana sayfa (popüler + trend grid), Arama sonuçları, Film detay, Favoriler
+- [x] Sayfalar/route'lar: Ana sayfa (popüler + trend grid), Arama sonuçları, Film detay, Favoriler
 - [ ] Bileşenler: poster kartı, film grid, arama çubuğu, skeleton loader, boş/hata durumu
 - [ ] Favori state yönetimi (cihaz bazlı `deviceId`'yi localStorage'da tut)
 - [ ] Responsive layout (mobil + masaüstü)

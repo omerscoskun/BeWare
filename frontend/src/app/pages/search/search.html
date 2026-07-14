@@ -1,0 +1,13 @@
+<h1 class="mb-4 text-2xl font-bold">
+  @if (query()) { "{{ query() }}" için sonuçlar } @else { Arama }
+</h1>
+
+@if (loading()) {
+  <p class="text-neutral-400">Aranıyor…</p>
+} @else if (error()) {
+  <p class="text-red-400">Arama başarısız oldu.</p>
+} @else if (query() && results().length === 0) {
+  <p class="text-neutral-400">Sonuç bulunamadı.</p>
+} @else {
+  <app-movie-grid [movies]="results()" />
+}
