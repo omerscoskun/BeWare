@@ -29,8 +29,8 @@ Bu liste, [Project_Details.md](Project_Details.md) mimarisine göre demo iskelet
 - [x] PostgreSQL + EF Core: `DbContext`, `FavoriteRepository`, migration
 
 ### 1d. API (Sunum)
-- [ ] Controller'lar: `MoviesController` (list/search/detail), `FavoritesController` (ekle/çıkar/listele — cihaz bazlı `deviceId`)
-- [ ] DI kayıtları (servis + arayüz eşleştirmeleri), global exception handling, CORS (Angular origin), health check
+- [x] Controller'lar: `MoviesController` (list/search/detail), `FavoritesController` (ekle/çıkar/listele — cihaz bazlı `deviceId`)
+- [x] DI kayıtları (servis + arayüz eşleştirmeleri), global exception handling, CORS (Angular origin), health check
 - [ ] Swagger/OpenAPI aktif et
 - [ ] `appsettings.json` + örnek `appsettings.Development.json` / secrets şablonu
 
