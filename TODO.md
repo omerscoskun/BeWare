@@ -21,12 +21,12 @@ Bu liste, [Project_Details.md](Project_Details.md) mimarisine göre demo iskelet
 ### 1b. Application (İş Mantığı)
 - [x] Arayüz sözleşmeleri: `ITmdbClient`, `IFavoriteRepository`, `IMovieCache` (Infrastructure bunları uygular)
 - [x] Servisler: `MovieService` (list/search/detail), `FavoriteService` (ekle/çıkar/listele)
-- [?] DTO'lar + mapping, iş kuralları
+- [x] DTO'lar + mapping, iş kuralları
 
 ### 1c. Infrastructure (Veri ve Dış Servisler)
-- [ ] TMDB `HttpClient` servisi (typed client, `tr-TR`, API key appsettings/secret'ten) — popüler, trend, arama, detay
-- [ ] Redis cache (`IDistributedCache`), TMDB cevaplarını cache'le (TTL belirle)
-- [ ] PostgreSQL + EF Core: `DbContext`, `FavoriteRepository`, migration
+- [x] TMDB `HttpClient` servisi (typed client, `tr-TR`, API key appsettings/secret'ten) — popüler, trend, arama, detay
+- [x] Redis cache (`IDistributedCache`), TMDB cevaplarını cache'le (TTL belirle)
+- [x] PostgreSQL + EF Core: `DbContext`, `FavoriteRepository`, migration
 
 ### 1d. API (Sunum)
 - [ ] Controller'lar: `MoviesController` (list/search/detail), `FavoritesController` (ekle/çıkar/listele — cihaz bazlı `deviceId`)
