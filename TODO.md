@@ -31,8 +31,8 @@ Bu liste, [Project_Details.md](Project_Details.md) mimarisine göre demo iskelet
 ### 1d. API (Sunum)
 - [x] Controller'lar: `MoviesController` (list/search/detail), `FavoritesController` (ekle/çıkar/listele — cihaz bazlı `deviceId`)
 - [x] DI kayıtları (servis + arayüz eşleştirmeleri), global exception handling, CORS (Angular origin), health check
-- [ ] Swagger/OpenAPI aktif et
-- [ ] `appsettings.json` + örnek `appsettings.Development.json` / secrets şablonu
+- [x] Swagger/OpenAPI aktif et
+- [?] `appsettings.json` + örnek `appsettings.Development.json` / secrets şablonu
 
 ## 2. Frontend — Angular + Tailwind
 - [ ] `ng new frontend` (routing + SCSS/CSS)
